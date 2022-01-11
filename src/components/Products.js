@@ -77,8 +77,8 @@ const Products = () => {
   const ShowProducts=()=>{
     return(
       <ThemeProvider theme={icommerce}>
-      <Container sx={{display:'flex', justifyContent:"center", flexDirection:'column', width:'1800px'}}>
-        <Container sx={{display:'flex', justifyContent:"center", }}>
+      <Container maxWidth={false} sx={{display:'flex', justifyContent:"center", flexDirection:'column', width:'1800px'}}>
+        <Container maxWidth={false} sx={{display:'flex', justifyContent:"center", }}>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>setFilter(productsData)}>All</CustomizedButton>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("men's clothing")}>Men's Clothing</CustomizedButton>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("women's clothing")}>Women's Clothing</CustomizedButton>

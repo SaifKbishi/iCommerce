@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 import { makeStyles } from "@material-ui/core/styles";
+import {capitalize} from '@material-ui/core';
 
 
 const Product = () => {
@@ -45,6 +46,7 @@ const Product = () => {
         <Skeleton height={650} width={450} margin='30px'/> 
         <Box margin='100px 80px 80px 80px'>
           <Skeleton height={150} width={450} marginButtom={200} marginTop={200}/> 
+          <Skeleton height={150} width={450} marginButtom={200} marginTop={200}/> 
           <Skeleton height={150} width={450} /> 
         </Box>   
       </Box>   
@@ -63,16 +65,16 @@ const Product = () => {
           alt={product.title}
           />
         <CardContent sx={{flexGrow:1, m:2, }}>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="h5" color="text.secondary" sx={{textTransform: 'uppercase'}}>
             {product.category}
           </Typography>
-          <Typography variant="h2" color="text.secondary">
+          <Typography variant="h2" color="text.secondary" >
             {product.title}
           </Typography>
           <Typography component="legend">Rating</Typography>
           <Rating
             name="simple-controlled"
-            value={rating}
+            value={product.rating && product.rating.rate}
             onChange={(event, newValue) => {
               setRating(newValue);
             }}
@@ -83,7 +85,7 @@ const Product = () => {
           <Typography variant="h5" color="text.secondary" sx={{my:1}}>
             {product.description}
           </Typography>
-          <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end' }}>
+          <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end', mt:15 }}>
             <Button variant="contained" sx={{mr:1}}>Add to Cart</Button>
             <Button variant="contained" >Go to Cart</Button>
           </Box>
