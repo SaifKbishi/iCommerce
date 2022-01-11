@@ -1,0 +1,121 @@
+import React, {useState, useEffect} from 'react';
+import {Container, Box, Typography, Divider,Button,Grid,Paper,Card, CardMedia,CardContent,Rating  } from '@mui/material/';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+import Skeleton from '@mui/material/Skeleton';
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const Product = () => {
+  const [rating, setRating] = useState(2);
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const params = useParams();
+  const styles = useStyles();
+    
+  useEffect(()=>{
+    const source=axios.CancelToken.source();
+    const getProductDetails =async ()=>{
+      setLoading(true);
+      try{
+        const prodcutDetails = await axios.get(`https://fakestoreapi.com/products/${params.id}`,{
+          cancelToken: source.token,
+        });
+        setProduct(prodcutDetails.data);
+        // console.log('24',prodcutDetails.data)
+        setLoading(false);
+      }catch(error){
+        if(axios.isCancel(error)){
+          console.log('caught cancel axios', error);
+        }else{
+          console.log('there was an error: ', error);
+        }   
+      }
+    }
+    getProductDetails();
+    return ()=>{
+      source.cancel();
+    }
+  },[]);
+  const Loading=()=>{
+    return(
+    <>
+      Loading...
+      <Box sx={{display:'flex', justifyContent:'space-around',flexDirection:'row', mx:15, }}>
+        <Skeleton height={650} width={450} margin='30px'/> 
+        <Box margin='100px 80px 80px 80px'>
+          <Skeleton height={150} width={450} marginButtom={200} marginTop={200}/> 
+          <Skeleton height={150} width={450} /> 
+        </Box>   
+      </Box>   
+    </>)
+  }
+
+  return (
+    <div >
+    {loading ? <Loading/> :
+      <Container maxWidth={false} className={styles.productContainer}>
+        <Card  className={styles.card}>
+          <CardMedia 
+          className={styles.media}
+          component="img"
+          image={product.image}
+          alt={product.title}
+          />
+        <CardContent sx={{flexGrow:1, m:2, }}>
+          <Typography variant="h5" color="text.secondary">
+            {product.category}
+          </Typography>
+          <Typography variant="h2" color="text.secondary">
+            {product.title}
+          </Typography>
+          <Typography component="legend">Rating</Typography>
+          <Rating
+            name="simple-controlled"
+            value={rating}
+            onChange={(event, newValue) => {
+              setRating(newValue);
+            }}
+          />
+          <Typography sx={{py:2, fontSize:'40px', fontWeight:'bold'}}>
+            $ {product.price}
+          </Typography>
+          <Typography variant="h5" color="text.secondary" sx={{my:1}}>
+            {product.description}
+          </Typography>
+          <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end' }}>
+            <Button variant="contained" sx={{mr:1}}>Add to Cart</Button>
+            <Button variant="contained" >Go to Cart</Button>
+          </Box>
+        </CardContent>
+
+        </Card>
+      </Container>
+      } 
+    </div>
+  );
+};
+
+export default Product;
+
+
+const useStyles = makeStyles({
+  productContainer: {    
+    // boxShadow: '0 3px 3px 3px rgba(194, 202, 208,  .3)',
+    marginTop:'30px',
+    width: '90%'
+  },
+  card:{
+    display: 'flex',
+    width: '100%',
+    margin: '0px',
+    padding: '10px',
+  },
+  media:{
+    height: '500px',     // as an example I am modifying width and height
+    width: '60%',
+    margin: '5%',
+    objectFit: 'contain'
+
+  },
+});
