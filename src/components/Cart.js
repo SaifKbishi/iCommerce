@@ -2,15 +2,17 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {delCart} from '../redux/action/index';
-import {Container, Box, Typography, Divider,Button, Rating  } from '@mui/material/';
+import {Container, Box, Typography, 
+// Button, 
+Rating  } from '@mui/material/';
 
 const Cart = () => {
   const state = useSelector((state)=> state.handleCart);//handleCart from the reducer
   const dispatch = useDispatch();
-  console.log(state)
-  const handleClose = (item)=>{
-    dispatch(delCart(item));
-  }
+  // console.log(state)
+  // const handleClose = (item)=>{
+  //   dispatch(delCart(item));
+  // }
 
   const cartItems = (cartItem)=>{
     return(

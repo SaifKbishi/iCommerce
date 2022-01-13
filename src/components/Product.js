@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 import { makeStyles } from "@material-ui/core/styles";
-import {capitalize} from '@material-ui/core';
+// import {capitalize} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import {addCart}  from '../redux/action'
 
@@ -15,7 +15,7 @@ const Product = () => {
   const params = useParams();
   const styles = useStyles();
   const dispatch = useDispatch();
-  
+
   const addProduct = (product)=>{
     console.log('addProduct', product)
     dispatch(addCart(product));
