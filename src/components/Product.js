@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Box, Typography, Divider,Button,Grid,Paper,Card, CardMedia,CardContent,Rating  } from '@mui/material/';
+import {Container, Box, Typography, Button,Card, CardMedia,CardContent,Rating  } from '@mui/material/';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 import { makeStyles } from "@material-ui/core/styles";
 import {capitalize} from '@material-ui/core';
-
+import {useDispatch} from 'react-redux';
+import {addCart}  from '../redux/action'
 
 const Product = () => {
   const [rating, setRating] = useState(2);
@@ -13,6 +14,12 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const styles = useStyles();
+  const dispatch = useDispatch();
+  
+  const addProduct = (product)=>{
+    console.log('addProduct', product)
+    dispatch(addCart(product));
+  }
     
   useEffect(()=>{
     const source=axios.CancelToken.source();
@@ -42,14 +49,19 @@ const Product = () => {
     return(
     <>
       Loading...
-      <Box sx={{display:'flex', justifyContent:'space-around',flexDirection:'row', mx:15, }}>
-        <Skeleton height={650} width={450} margin='30px'/> 
-        <Box margin='100px 80px 80px 80px'>
-          <Skeleton height={150} width={450} marginButtom={200} marginTop={200}/> 
-          <Skeleton height={150} width={450} marginButtom={200} marginTop={200}/> 
-          <Skeleton height={150} width={450} /> 
-        </Box>   
+      <Box display='flex' flexDirection='row' justifyContent='center' >
+      <Box paddingRight='30px'>      
+        <Skeleton height={600} width={500} /> 
       </Box>   
+      <Box marginTop='100px'>
+        <Skeleton height={50} width={450} /> 
+        <Skeleton height={75} /> 
+        <Skeleton height={25} width={150} /> 
+        <Skeleton height={50}  /> 
+        <Skeleton height={150}  />
+        <Skeleton height={50} width={450} />  
+      </Box>
+      </Box>
     </>)
   }
 
@@ -86,7 +98,7 @@ const Product = () => {
             {product.description}
           </Typography>
           <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end', mt:15 }}>
-            <Button variant="contained" sx={{mr:1}}>Add to Cart</Button>
+            <Button variant="contained" sx={{mr:1}} onClick={()=>addProduct(product)}>Add to Cart</Button>
             <Button variant="contained" >Go to Cart</Button>
           </Box>
         </CardContent>
@@ -99,7 +111,6 @@ const Product = () => {
 };
 
 export default Product;
-
 
 const useStyles = makeStyles({
   productContainer: {    

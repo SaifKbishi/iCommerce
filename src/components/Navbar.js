@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Container,Avatar ,Button ,Tooltip ,MenuItem,InputBase,Badge, Link,Stack} from '@mui/material/';
 import { styled, alpha,createTheme,ThemeProvider  } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
+import {useSelector} from 'react-redux';
 
+import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Container,Avatar ,Button ,Tooltip ,MenuItem,InputBase,Badge, Link,Stack} from '@mui/material/';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -18,10 +19,12 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 // const pages = ['Products', 'About', 'Contact'];
 
 export default function Navbar() {
+  const state = useSelector((state) => state.handleCart)
+  console.log(state)
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [isLoggedIn , setIsLoggedIn] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     console.log('handleOpenNavMenu')
@@ -45,7 +48,10 @@ export default function Navbar() {
   const handleLogInLogout = ()=>{
     setIsLoggedIn(!isLoggedIn)
   }
-
+ const routeChange=()=>{
+    let path = `/cart`; 
+    navigate(path);
+  }
 
   const menuId = 'primary-search-account-menu';
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -101,7 +107,7 @@ export default function Navbar() {
           </Box>
           {/**END MOBILE for left menu*/}
           <Link href="/" color="inherit" underline="none"
-            onClick={handleCloseNavMenu}
+            // onClick={handleCloseNavMenu}
             sx={{ my: 3, mx:1, color: 'success', display: 'block' }} textAlign="center">
             <Typography
               variant="h6"
@@ -112,11 +118,11 @@ export default function Navbar() {
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
              <Link href="/products" color="inherit" underline="hover" 
-              onClick={handleCloseNavMenu}
+              // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
               >PRODUCTS</Link>
              <Link href="/about" color="inherit" underline="hover" 
-              onClick={handleCloseNavMenu}
+              // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
               >ABOUT</Link>
              <Link href="/contact" color="inherit" underline="hover" 
@@ -228,7 +234,7 @@ export default function Navbar() {
             <Stack direction="row" spacing={2} >
               <Button variant="contained" color='info' onClick={() => {handleLogInLogout();}} ><LoginIcon/> Login</Button>
               <Button variant="contained" color='info' onClick={() => {alert('Register clicked');}} ><PersonAddIcon/>Register</Button>
-              <Button variant="contained" color='info' onClick={() => {alert('Cart clicked');}} ><ShoppingCartIcon/>Cart</Button>
+              <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({state.length})</Button>
             </Stack>
           }
         </Toolbar>

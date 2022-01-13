@@ -4,8 +4,7 @@ import {Container, Box, Typography, Divider,Button,Grid,Paper } from '@mui/mater
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import { styled, alpha,createTheme,ThemeProvider,darken  } from '@mui/material/styles';
-// import Skeleton from 'react-loading-skeleton';
+import { styled, createTheme,ThemeProvider  } from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 
 import {useNavigate} from 'react-router-dom';
@@ -70,7 +69,7 @@ const Products = () => {
     setFilter(filteredData);
   }
   const routeChange=(prodId)=>{
-    let path = `${prodId}`; 
+    let path = `/products/${prodId}`; 
     navigate(path);
   }
 
