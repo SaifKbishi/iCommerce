@@ -7,7 +7,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Cart from './components/Cart'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
 import store from './redux/store'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <>
     <BrowserRouter>
     <Provider store={store}>
-    <Navbar/>
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/products" element={<Products/>} />

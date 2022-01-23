@@ -6,8 +6,9 @@ const handleCart=(state = cart, action)=>{
     case 'ADDITEM':
       const exist = state.find((item)=>item.id === product.id);
       if(exist){
+        // console.log('exist')
         return state.map((item)=>
-        item.id === product.id ? {...item, qty: item.qty+1} : item);
+        item.id === product.id ? {...item, qty: item.qty + 1} : item);
       }else{
         const product = action.payload;
         return[

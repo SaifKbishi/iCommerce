@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {delCart} from '../redux/action/index';
 import {Container, Box, Typography, 
-// Button, 
+Button, 
 Rating  } from '@mui/material/';
 
 const Cart = () => {
@@ -16,7 +16,7 @@ const Cart = () => {
 
   const cartItems = (cartItem)=>{
     return(
-      <Container sx={{display:'flex', my:3,p:1, background:'rgba(194, 202, 208, 0.3)', borderRadius:'20px', alignItems: 'center' }} key={cartItem.id}>
+      <Container sx={{display:'flex', my:2,p:1, background:'rgba(194, 202, 208, 0.3)', borderRadius:'20px', alignItems: 'center' }} key={cartItem.id}>
         <Box >
           <img
           src={`${cartItem.image}`}          
@@ -26,20 +26,21 @@ const Cart = () => {
         />
         </Box>
         <Box>
-        <Typography variant="h2" sx={{m:4, p:2}}>
-          {cartItem.title}
-        </Typography>
-        <Typography variant="h5" sx={{m:4, p:2, fontWeight:'bold'}}>
-          {state.length} X {cartItem.price}$ = {state.length * cartItem.price}$
-        </Typography>
-        </Box>
+          <Typography variant="h2" sx={{m:4, p:2}}>
+            {cartItem.title}
+          </Typography>
+          <Typography variant="h5" sx={{m:4, p:2, fontWeight:'bold'}}>
+            {cartItem.qty} X {cartItem.price}$ = {cartItem.qty * cartItem.price}$
+          </Typography>
+        </Box>       
       </Container>
     );
   }
 
   return (
-    <div>
+    <div marginTop='200px' >
       {state.length !== 0 && state.map(cartItems)}
+      <Button variant="contained">Proceed to checkout</Button>
     </div>
   );
 };

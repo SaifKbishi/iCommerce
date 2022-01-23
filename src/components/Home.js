@@ -7,10 +7,11 @@ import Box from '@mui/material/Box';
 import { CardActionArea } from '@mui/material';
 import { styled, alpha,createTheme,ThemeProvider  } from '@mui/material/styles';
 import Products from './Products'
+import Footer from './Footer'
 
 const Home = () => {
   return (
-    <div className="hero" >
+    <div className="hero" margintop='85px'>
       <Card sx={{ width: '100%', height:'100vh' }}>        
         <CardContent>
         <Box className="container" sx={{position: 'absolute', color:'#afd275'}}>
@@ -30,6 +31,7 @@ const Home = () => {
         </CardContent>
       </Card>
       <Products/>
+      <Footer/>
     </div>
   );
 };

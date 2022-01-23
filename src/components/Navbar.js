@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { styled, alpha,createTheme,ThemeProvider  } from '@mui/material/styles';
-import { useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import {useSelector} from 'react-redux';
 
-import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Avatar ,Button ,Tooltip ,MenuItem,InputBase,Badge, Link,Stack} from '@mui/material/';
+import { useNavigate, Link as RouterLink } from "react-router-dom";
+import {Link as MUILink} from '@mui/material/';
+
+import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Avatar ,Button ,Tooltip ,MenuItem,InputBase,Badge, Stack} from '@mui/material/';
 import SearchIcon from '@mui/icons-material/Search';
-// import MoreIcon from '@mui/icons-material/MoreVert';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -20,7 +22,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 export default function Navbar() {
   const state = useSelector((state) => state.handleCart)
-  console.log(state)
+  // console.log('23: ',state, 'state length: ', state.length)
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [isLoggedIn , setIsLoggedIn] = useState(false);
@@ -58,8 +60,8 @@ export default function Navbar() {
   
   return (
     <ThemeProvider theme={icommerce}>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, zIndex:1,position:"sticky", top:200 }}>
+      <AppBar >
         <Toolbar>
           {/**MOBILE */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
@@ -91,22 +93,22 @@ export default function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <Link href="/products" color="inherit" underline="hover" 
+              <MUILink component={RouterLink} to="/products" color="inherit" underline="hover" 
                 onClick={handleCloseNavMenu}
                 sx={{ my: 3, mx:1, color: 'black', display: 'block' }} textAlign="center"
-                >Products</Link>                
-              <Link href="/about" color="inherit" underline="hover" 
+                >Products</MUILink>                
+              <MUILink component={RouterLink} to="/about" color="inherit" underline="hover" 
                 onClick={handleCloseNavMenu}
                 sx={{ my: 3, mx:1, color: 'black', display: 'block' }} textAlign="center"
-                >About</Link>
-              <Link href="/contact" color="inherit" underline="hover" 
+                >About</MUILink>
+              <MUILink component={RouterLink} to="/contact" color="inherit" underline="hover" 
                 onClick={handleCloseNavMenu}
                 sx={{ my: 3, mx:1, color: 'black', display: 'block' }} textAlign="center"
-                >Contact</Link>
+                >Contact</MUILink>
             </Menu>
           </Box>
           {/**END MOBILE for left menu*/}
-          <Link href="/" color="inherit" underline="none"
+          <MUILink component={RouterLink} to="/" color="inherit" underline="none"
             // onClick={handleCloseNavMenu}
             sx={{ my: 3, mx:1, color: 'success', display: 'block' }} textAlign="center">
             <Typography
@@ -115,20 +117,20 @@ export default function Navbar() {
               component="div"
               sx={{ display: { xs: 'none', sm: 'block' } }}
               >iAmazon</Typography>
-          </Link>
+          </MUILink>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
-             <Link href="/products" color="inherit" underline="hover" 
+              <MUILink component={RouterLink} to="/products" color="inherit" underline="hover" 
               // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
-              >PRODUCTS</Link>
-             <Link href="/about" color="inherit" underline="hover" 
+              >PRODUCTS</MUILink>
+            <MUILink component={RouterLink} to="/about" color="inherit" underline="hover" 
               // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
-              >ABOUT</Link>
-             <Link href="/contact" color="inherit" underline="hover" 
+              >ABOUT</MUILink>
+             <MUILink component={RouterLink} to="/contact" color="inherit" underline="hover" 
               onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
-              >CONTACT</Link>
+              >CONTACT</MUILink>
           </Box>
           <Search>
             <SearchIconWrapper>

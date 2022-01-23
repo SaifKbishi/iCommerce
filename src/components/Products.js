@@ -6,12 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { styled, createTheme,ThemeProvider  } from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
-
 import {useNavigate} from 'react-router-dom';
 
+const {getProductsData} = require('../DAL/DAL');
 
 const Products = () => {
-
   const [productsData, setProductsData] = useState([]);
   const [filter, setFilter] = useState(productsData);
   const [loading, setLoading] = useState(true);
@@ -23,11 +22,13 @@ const Products = () => {
     const getProducts=async()=>{
       setLoading(true);
       try{
-        const products = await axios.get(`https://fakestoreapi.com/products/`,{
-          cancelToken: source.token,
-        });
+        // const products = await axios.get(`https://fakestoreapi.com/products/`,{
+        //   cancelToken: source.token,
+        // });
+        const products = await getProductsData(source);
+
         setProductsData(products.data);
-        setFilter(products.data);        
+        setFilter(products.data);
         setLoading(false);
       }catch(error){
         if(axios.isCancel(error)){
@@ -71,6 +72,7 @@ const Products = () => {
   const routeChange=(prodId)=>{
     let path = `/products/${prodId}`; 
     navigate(path);
+    // history.push(path);
   }
 
   const ShowProducts=()=>{
@@ -89,14 +91,15 @@ const Products = () => {
               <Grid container  spacing={spacing}>
                 {filter.map((product, index)=>{
                   return(
-                  <Grid key={index} item>
-                    <Card sx={{ maxWidth: 250, height:'100%', display:'flex', alignContent:"center",flexDirection:'column', justifyContent: 'space-between' }}>  
-                      <CardMedia
+                  <Grid key={index} item sx={{width:'25%'}}>
+                    <Card sx={{ maxWidth: 250, height:'100%', display:'flex', alignContent:"center",flexDirection:'column', justifyContent: 'space-between',alignItems:'center', }}>  
+                      <CardMedia sx={{display:'flex',alignItems:'center',objectFit:'contain' }}
                         component="img"
-                        width='100%'
-                        height='fit-content'
+                        // width='100%'
+                        height='200px'//'fill'//'fit-content'
                         image={product.image}
                         alt={product.title}
+                        
                       />
                       <CardContent  sx={{ display:'flex', alignContent:"center",flexDirection:'column', textAlign:'center', }}>
                         <Typography variant="h6"  >
