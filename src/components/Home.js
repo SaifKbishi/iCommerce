@@ -5,33 +5,34 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { CardActionArea } from '@mui/material';
-import { styled, alpha,createTheme,ThemeProvider  } from '@mui/material/styles';
+import { styled, alpha, createTheme, ThemeProvider, responsiveFontSizes} from '@mui/material/styles';
 import Products from './Products'
 import Footer from './Footer'
 
 const Home = () => {
   return (
-    <div className="hero" margintop='85px'>
-      <Card sx={{ width: '100%', height:'100vh' }}>        
+    <div className="hero" >
+      <Card sx={{ width: '100%',  mt:10 }}>        
         <CardContent>
-        <Box className="container" sx={{position: 'absolute', color:'#afd275'}}>
-          <Typography gutterBottom variant="h1" component="div" sx={{fontWeight:'bold', }}>
-            NEW COLLECTION IS HERE
-          </Typography>
-          <Typography variant="h3" color="#7E685A" >
-            CHECKOUT MODREN STYLES
-          </Typography>
+          <ThemeProvider theme={typoTheme}>
+          <Box className="container" sx={{position: 'absolute', color:'#afd275'}}>
+            <Typography gutterBottom variant="h1" component="div" sx={{fontWeight:'bold', }}>
+              NEW COLLECTION IS HERE
+            </Typography>
+            <Typography variant="h3" color="#7E685A" >
+              CHECKOUT MODREN STYLES
+            </Typography>
           </Box>
-        <CardMedia
-          component="img"
-          height="100%"
-          image="https://image.shutterstock.com/image-photo/businessman-on-blurred-background-using-600w-566874976.jpg"
-          alt="shutterstock image"
-        />
+          </ThemeProvider>
+          <CardMedia
+            component="img"
+            height="100%"
+            image="https://image.shutterstock.com/image-photo/businessman-on-blurred-background-using-600w-566874976.jpg"
+            alt="shutterstock image"
+          />
         </CardContent>
       </Card>
       <Products/>
-      <Footer/>
     </div>
   );
 };
@@ -69,3 +70,6 @@ const icommerce = createTheme({
     disabled:{},
   }
 });
+
+let typoTheme = createTheme();
+typoTheme = responsiveFontSizes(typoTheme);

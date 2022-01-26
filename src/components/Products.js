@@ -4,7 +4,7 @@ import {Container, Box, Typography, Divider,Button,Grid,Paper } from '@mui/mater
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import { styled, createTheme,ThemeProvider  } from '@mui/material/styles';
+import {styled, createTheme, ThemeProvider, responsiveFontSizes} from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 import {useNavigate} from 'react-router-dom';
 
@@ -47,8 +47,10 @@ const Products = () => {
 
   const Loading=()=>{
     return(
-    <>
-      Loading...
+    <Box sx={{display:'flex', justifyContent:"center", flexWrap: 'wrap',flexDirection:{xs:'column', sm:'row'} }}>
+      <Box sx={{mx:1}}>
+        <Typography> Loading...</Typography>
+      </Box>  
       <Box sx={{mx:1}}>
         <Skeleton height={450} width={250} /> 
       </Box>  
@@ -61,7 +63,7 @@ const Products = () => {
       <Box sx={{mx:1}}>
         <Skeleton height={450} width={250}/>
       </Box>  
-    </>)
+    </Box>)
   }
   const filterProducts=(filterstring)=>{
     const filteredData = productsData.filter((product)=>{
@@ -79,19 +81,19 @@ const Products = () => {
     return(
       <ThemeProvider theme={icommerce}>
       <Container maxWidth={false} sx={{display:'flex', justifyContent:"center", flexDirection:'column', width:'1800px'}}>
-        <Container maxWidth={false} sx={{display:'flex', justifyContent:"center", }}>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>setFilter(productsData)}>All</CustomizedButton>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("men's clothing")}>Men's Clothing</CustomizedButton>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("women's clothing")}>Women's Clothing</CustomizedButton>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("jewelery")}>Jewelry</CustomizedButton>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', mx:1}} onClick={()=>filterProducts("electronics")}>Electronic</CustomizedButton>    
+        <Container maxWidth={false} sx={{display:'flex', justifyContent:"space-around", flexWrap: 'wrap'}}>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>setFilter(productsData)}>All</CustomizedButton>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("men's clothing")}>Men's Clothing</CustomizedButton>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("women's clothing")}>Women's Clothing</CustomizedButton>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("jewelery")}>Jewelry</CustomizedButton>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("electronics")}>Electronic</CustomizedButton>    
         </Container>
           <Grid sx={{ flexGrow: 1, mt:4 }} container spacing={2}>
             <Grid item xs={20}>
               <Grid container  spacing={spacing}>
                 {filter.map((product, index)=>{
                   return(
-                  <Grid key={index} item sx={{width:'25%'}}>
+                  <Grid key={index} item sx={{width: 250, flexWrap: 'wrap', justifyContent:'center' }}>
                     <Card sx={{ maxWidth: 250, height:'100%', display:'flex', alignContent:"center",flexDirection:'column', justifyContent: 'space-between',alignItems:'center', }}>  
                       <CardMedia sx={{display:'flex',alignItems:'center',objectFit:'contain' }}
                         component="img"
@@ -126,9 +128,11 @@ const Products = () => {
     // <>
       <Container sx={{py:5, my:5, width: 'xl' }}>
         <Box>
+        <ThemeProvider theme={typoTheme}>
         <Typography variant='h1' sx={{display:'flex', justifyContent:'center'}}>
           Latest Products
         </Typography>
+        </ThemeProvider >
         </Box>
         <Divider />
         <Box sx={{display:'flex', justifyContent:'center', mt:5, width:'100%'}}>
@@ -185,3 +189,6 @@ const CustomizedButton = styled(Button)(
   }
 `,
 );
+
+let typoTheme = createTheme();
+typoTheme = responsiveFontSizes(typoTheme);

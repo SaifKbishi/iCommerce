@@ -18,11 +18,9 @@ import LoginIcon from '@mui/icons-material/Login';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
-// const pages = ['Products', 'About', 'Contact'];
 
 export default function Navbar() {
-  const state = useSelector((state) => state.handleCart)
-  // console.log('23: ',state, 'state length: ', state.length)
+  const state = useSelector((state) => state.handleCart);
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [isLoggedIn , setIsLoggedIn] = useState(false);
@@ -60,11 +58,11 @@ export default function Navbar() {
   
   return (
     <ThemeProvider theme={icommerce}>
-    <Box sx={{ flexGrow: 1, zIndex:1,position:"sticky", top:200 }}>
+    <Box sx={{ flexGrow: 1, zIndex:1, position:"sticky", top:200 }}>
       <AppBar >
         <Toolbar>
           {/**MOBILE */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
+          <Box sx={{  display: { xs: 'flex', md: 'none' } }} >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -110,20 +108,15 @@ export default function Navbar() {
           {/**END MOBILE for left menu*/}
           <MUILink component={RouterLink} to="/" color="inherit" underline="none"
             // onClick={handleCloseNavMenu}
-            sx={{ my: 3, mx:1, color: 'success', display: 'block' }} textAlign="center">
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: 'none', sm: 'block' } }}
-              >iAmazon</Typography>
+            sx={{ my: 3, mx:1, color: 'success', display: 'flex', flexGrow: {xs:1, sm:1,md:0}, }} textAlign="center">
+            <Typography variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }} >iAmazon</Typography>
           </MUILink>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
               <MUILink component={RouterLink} to="/products" color="inherit" underline="hover" 
               // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
               >PRODUCTS</MUILink>
-            <MUILink component={RouterLink} to="/about" color="inherit" underline="hover" 
+              <MUILink component={RouterLink} to="/about" color="inherit" underline="hover" 
               // onClick={handleCloseNavMenu}
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
               >ABOUT</MUILink>
@@ -233,6 +226,20 @@ export default function Navbar() {
               </Menu>
             </Box>
             </>:
+            // <Box>
+              
+            //   <Menu >
+            //     <MenuItem>
+            //       <p>Logout</p>
+            //     </MenuItem>
+            //     <MenuItem>
+            //     <p>Logout</p>
+            //     </MenuItem>
+            //     <MenuItem>
+            //     <p>Logout</p>
+            //     </MenuItem>
+            //   </Menu>
+            // </Box>
             <Stack direction="row" spacing={2} >
               <Button variant="contained" color='info' onClick={() => {handleLogInLogout();}} ><LoginIcon/> Login</Button>
               <Button variant="contained" color='info' onClick={() => {alert('Register clicked');}} ><PersonAddIcon/>Register</Button>

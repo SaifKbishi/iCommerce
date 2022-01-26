@@ -5,13 +5,13 @@ import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Avatar ,Button ,Tooltip 
 
 const Footer = () => {
   return (
-    <Box sx={{display: 'flex', justifyContent:'center', background:'#C2CAD0'}}>
+    <Box sx={{display: 'flex', justifyContent:'center', background:'#C2CAD0', mt:10}}>
       <MUILink component={RouterLink} to="/" color="inherit" underline="none" sx={{ my: 3, mx:2, color: 'success', display: 'block' }} textAlign="center">
       <Typography
         variant="h5"
         noWrap
         component="div"
-        sx={{ display: { xs: 'none', sm: 'block' } }}
+        sx={{ display: { xs: 'flex', sm: 'block' }, flexGrow:1}}
         >iAmazon</Typography>
       </MUILink>
       <MUILink component={RouterLink} to="/" color="inherit" underline="none" sx={{ my: 3, mx:2, color: 'success', display: 'block' }} textAlign="center">

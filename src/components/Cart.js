@@ -2,9 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {delCart} from '../redux/action/index';
-import {Container, Box, Typography, 
-Button, 
-Rating  } from '@mui/material/';
+import {Container, Box, Typography, Button, Rating  } from '@mui/material/';
 
 const Cart = () => {
   const state = useSelector((state)=> state.handleCart);//handleCart from the reducer
@@ -38,9 +36,14 @@ const Cart = () => {
   }
 
   return (
-    <div marginTop='200px' >
-      {state.length !== 0 && state.map(cartItems)}
-      <Button variant="contained">Proceed to checkout</Button>
+    <div style={{minHeight:'70vh'}}>
+    <Box sx={{mt:13, display:'flex', justifyContent:'space-around', alignItems: 'center'}}>
+      {state.length === 0 && <Typography variant="h2" sx={{mt:5}}>Your Cart is empty</Typography>}
+      <Box sx={{ my:1 }}>
+        {state.length !== 0 && state.map(cartItems)}
+        {state.length !== 0 && <Button variant="contained" >Proceed to checkout</Button>}
+      </Box>
+    </Box>
     </div>
   );
 };

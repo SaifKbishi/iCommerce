@@ -3,6 +3,7 @@ import {Container, Box, Typography,Paper} from '@mui/material/';
 
 const About = () => {
   return (
+    <div style={{height:'70vh'}}>
     <Container sx={{boxShadow: 3, mt:15, width:'800px',}}>
       <Box 
         sx={{
@@ -30,6 +31,7 @@ You can even choose to present your history to your viewers in the form of a tim
       </Box>
 
     </Container>
+    </div>
   );
 };
 
