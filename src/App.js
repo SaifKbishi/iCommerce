@@ -6,10 +6,11 @@ import Product from './components/Product'
 import About from './components/About'
 import Contact from './components/Contact'
 import Cart from './components/Cart'
+import Footer from './components/Footer';
+import Checkout from './components/Checkout';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './redux/store';
-import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
       <Footer/>
     </Provider>

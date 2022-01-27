@@ -91,7 +91,7 @@ const Product = () => {
             <Typography variant="h5" color="text.secondary" sx={{textTransform: 'uppercase'}}>
               {product.category}
             </Typography>
-            <Typography variant="h2" color="text.secondary" >
+            <Typography variant="h2" color="text.secondary" sx={{fontSize:{xs: '2rem', sm:'4rem'}}}>
               {product.title}
             </Typography>
             <Typography component="legend">Rating</Typography>
@@ -102,7 +102,7 @@ const Product = () => {
                 setRating(newValue);
               }}
             />
-            <Typography sx={{py:2, fontSize:'40px', fontWeight:'bold'}}>
+            <Typography sx={{py:2, fontSize:{xs:'25px', sm:'40px'}, fontWeight:'bold'}}>
               $ {product.price}
             </Typography>
             <Typography variant="h5" color="text.secondary" sx={{my:1}}>
@@ -143,4 +143,3 @@ const useStyles = makeStyles({
     alignSelf: 'center'
   },
 });
-
