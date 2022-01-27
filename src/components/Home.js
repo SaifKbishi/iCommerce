@@ -14,16 +14,18 @@ const Home = () => {
     <div className="hero" >
       <Card sx={{ width: '100%',  mt:10 }}>        
         <CardContent>
-          <ThemeProvider theme={typoTheme}>
           <Box className="container" sx={{position: 'absolute', color:'#afd275'}}>
+          <ThemeProvider theme={typoTheme}>
             <Typography gutterBottom variant="h1" component="div" sx={{fontWeight:'bold', }}>
               NEW COLLECTION IS HERE
             </Typography>
+          </ThemeProvider>
+          <ThemeProvider theme={typoThemeh3}>
             <Typography variant="h3" color="#7E685A" >
               CHECKOUT MODREN STYLES
             </Typography>
-          </Box>
           </ThemeProvider>
+          </Box>
           <CardMedia
             component="img"
             height="100%"
@@ -72,4 +74,25 @@ const icommerce = createTheme({
 });
 
 let typoTheme = createTheme();
-typoTheme = responsiveFontSizes(typoTheme);
+let typoThemeh3 = createTheme();
+// typoTheme = responsiveFontSizes(typoTheme);
+
+typoTheme.typography.h1 = {
+  fontSize: '2.2rem',
+  '@media (min-width:380px)': {
+    fontSize: '2.5rem',
+  },
+  [typoTheme.breakpoints.up('md')]: {
+    fontSize: '6rem',
+  },
+};
+
+typoThemeh3.typography.h3 = {
+  fontSize: '1.5rem',
+  '@media (min-width:380px)': {
+    fontSize: '2.5rem',
+  },
+  [typoThemeh3.breakpoints.up('md')]: {
+    fontSize: '3rem',
+  },
+};

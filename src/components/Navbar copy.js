@@ -226,73 +226,25 @@ export default function Navbar() {
               </Menu>
             </Box>
             </>:
-            <>
-            <Box sx={{ flexGrow: 0, display:{xs:'flex', md: 'none' }}}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Your Avatar" src="" />
-                </IconButton>
-              </Tooltip>              
-              <Menu 
-                sx={{ mt: '45px' }}
-                id="user-menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem onClick={()=>handleLogInLogout()}>
-                  <IconButton
-                  size="large"
-                  aria-label="Logout"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                  >
-                    <LoginIcon />
-                  </IconButton>
-                  <p>Login</p>
-                </MenuItem>
-                <MenuItem >
-                  <IconButton
-                  size="large"
-                  aria-label="Logout"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                  >
-                    <PersonAddIcon />
-                  </IconButton>
-                  <p>Register</p>
-                </MenuItem>
-                <MenuItem onClick={()=>routeChange()}>
-                  <IconButton
-                  size="large"
-                  aria-label="Logout"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                  >
-                    <ShoppingCartIcon />
-                  </IconButton>
-                  <p>Cart</p>
-                </MenuItem>
-              </Menu>
-            </Box>
-            <Stack direction="row" spacing={2} sx={{ display:{xs: 'none', md: 'flex' }}}>
+            // <Box>
+              
+            //   <Menu >
+            //     <MenuItem>
+            //       <p>Logout</p>
+            //     </MenuItem>
+            //     <MenuItem>
+            //     <p>Logout</p>
+            //     </MenuItem>
+            //     <MenuItem>
+            //     <p>Logout</p>
+            //     </MenuItem>
+            //   </Menu>
+            // </Box>
+            <Stack direction="row" spacing={2} >
               <Button variant="contained" color='info' onClick={() => {handleLogInLogout();}} ><LoginIcon/> Login</Button>
               <Button variant="contained" color='info' onClick={() => {alert('Register clicked');}} ><PersonAddIcon/>Register</Button>
               <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({state.length})</Button>
             </Stack>
-            </>
           }
         </Toolbar>
       </AppBar>

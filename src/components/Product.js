@@ -3,7 +3,7 @@ import {Container, Box, Typography, Button,Card, CardMedia,CardContent,Rating  }
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createTheme, responsiveFontSizes,ThemeProvider } from "@material-ui/core/styles";
 // import {capitalize} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import {addCart}  from '../redux/action';
@@ -50,7 +50,7 @@ const Product = () => {
     return(
     <>
       Loading...
-      <Box display='flex' flexDirection='row' justifyContent='center' >
+      <Box sx={{display:'flex', flexDirection:{xs:'column', sm:'row'}, justifyContent:'center'}} >
         <Box paddingRight='30px'>      
           <Skeleton height={600} width={500} /> 
         </Box>   
@@ -80,7 +80,7 @@ const Product = () => {
     <div >
     {loading ? <Loading/> :
       <Container maxWidth={false} className={styles.productContainer}>
-        <Card  className={styles.card}>
+        <Card  className={styles.card} sx={{display:'flex', flexDirection:{xs:'column', sm:'row'}, justifyContent:'center'}}>
           <CardMedia 
           className={styles.media}
           component="img"
@@ -133,12 +133,14 @@ const useStyles = makeStyles({
     width: '100%',
     margin: '0px',
     padding: '10px',
+    marginTop: '70px'
   },
   media:{
-    height: '500px',     // as an example I am modifying width and height
+    maxHeight: '500px',     // as an example I am modifying width and height
     width: '60%',
     margin: '5%',
-    objectFit: 'contain'
-
+    objectFit: 'contain',
+    alignSelf: 'center'
   },
 });
+

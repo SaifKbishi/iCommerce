@@ -191,4 +191,14 @@ const CustomizedButton = styled(Button)(
 );
 
 let typoTheme = createTheme();
-typoTheme = responsiveFontSizes(typoTheme);
+// typoTheme = responsiveFontSizes(typoTheme);
+
+typoTheme.typography.h1 = {
+  fontSize: '2.2rem',
+  '@media (min-width:380px)': {
+    fontSize: '2.5rem',
+  },
+  [typoTheme.breakpoints.up('md')]: {
+    fontSize: '4rem',
+  },
+};
