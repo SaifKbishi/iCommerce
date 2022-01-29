@@ -30,7 +30,7 @@ const Cart = () => {
         />
         </Box>
         <Box>
-          <Typography variant="h2" sx={{m:4, p:2, fontSize:{xs: '2rem', sm:'4rem'}}}>
+          <Typography variant="h2" sx={{m:4, p:2, fontSize:{xs: '2rem', sm:'3rem'}}}>
             {cartItem.title}
           </Typography>
           <Typography variant="h5" sx={{m:4, p:2, fontWeight:'bold'}}>

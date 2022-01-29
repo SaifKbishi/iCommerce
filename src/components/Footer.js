@@ -36,7 +36,7 @@ const Footer = () => {
         noWrap
         component="div"
         sx={{ display: { xs: 'none', sm: 'block' } }}
-        >© 1996-2022, Amazon.com, Inc. or its affiliates</Typography>
+        >© 1996-2022, iAmazon.com, Inc. or its affiliates</Typography>
       </MUILink>
     </Box>
   );

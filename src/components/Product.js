@@ -4,7 +4,6 @@ import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
 import { makeStyles, createTheme, responsiveFontSizes,ThemeProvider } from "@material-ui/core/styles";
-// import {capitalize} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import {addCart}  from '../redux/action';
 const {getProductDetailsData} = require('../DAL/DAL');
