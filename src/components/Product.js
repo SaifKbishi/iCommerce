@@ -73,6 +73,10 @@ const Product = () => {
     let path = `/cart`; 
     navigate(path);
   }
+  const goToProducts=()=>{
+    let path = '/products';
+    navigate(path);
+  }
 
 
   return (
@@ -107,9 +111,10 @@ const Product = () => {
             <Typography variant="h5" color="text.secondary" sx={{my:1}}>
               {product.description}
             </Typography>
-            <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end', mt:15 }}>
-              <Button variant="contained" sx={{mr:1}} onClick={()=>addProduct(product)}>Add to Cart</Button>
-              <Button variant="contained" onClick={() => routeChange()}>Go to Cart</Button>
+            <Box sx={{display:'flex', justifyContent: 'flex-start', alignSelf: 'flex-end', flexWrap:'wrap', mt:15 }}>
+              <Button variant="contained" sx={{m:0.5, flexGrow:1}} onClick={()=>addProduct(product)}>Add to Cart</Button>
+              <Button variant="contained" sx={{m:0.5, flexGrow:1}} onClick={() => routeChange()}>Go to Cart</Button>
+              <Button variant="contained" sx={{display:{xs:'flex', md:'none'}, m:0.5, flexGrow:1}} onClick={() => goToProducts()}>Continue Shopping</Button>
             </Box>
           </CardContent>
         </Card>
