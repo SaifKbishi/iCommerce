@@ -4,10 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { CardActionArea } from '@mui/material';
-import { styled, alpha, createTheme, ThemeProvider, responsiveFontSizes} from '@mui/material/styles';
-import Products from './Products'
-import Footer from './Footer'
+import {  createTheme, ThemeProvider} from '@mui/material/styles';
+import Products from './Products';
 
 const Home = () => {
   return (

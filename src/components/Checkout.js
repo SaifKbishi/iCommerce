@@ -1,8 +1,7 @@
 import React from 'react';
-import {Container, Box, Typography, Button, Rating, Divider, TextField, FormControl, InputLabel, Input, FormHelperText,OutlinedInput, Checkbox} from '@mui/material/';
-import {styled, createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
-import {makeStyles} from '@mui/styles'
-import SmallBasket from './SmallBasket'
+import {Container, Box, Typography, Button, Divider, TextField, Checkbox} from '@mui/material/';
+import {styled, createTheme, makeStyles } from '@mui/material/styles';
+import SmallBasket from './SmallBasket';
 
 const Checkout = () => {
    const classes = useStyles()

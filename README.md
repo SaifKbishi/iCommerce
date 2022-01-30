@@ -1,6 +1,6 @@
 # iCommerce
 
-This project is an e-commerce site, that was built with React and Material-UI.
+This project is an e-commerce site, that I have built with React and Material-UI.
 
 ## Available Scripts
 
@@ -18,6 +18,7 @@ To demonstrate a real E-commenrce application i used a free online REST API [fak
 ### React UI library
 I have robusted and customized it with [MUI](https://mui.com/), the React UI library.
 I have created design themes for this specific application.
+The app is fully responsive.
 
 ### `npm test`
 To run tests using jest

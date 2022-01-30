@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Box, Typography, Divider,Button} from '@mui/material/';
-import {addCart,delCart}  from '../redux/action';
+import {delCart}  from '../redux/action';
 
 const SmallBasket = () => {
   const state = useSelector((state)=> state.handleCart);

@@ -1,10 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import {Container, Box, Typography, Divider,Button,Grid,Paper } from '@mui/material/';
+import {Container, Box, Typography, Divider,Button,Grid } from '@mui/material/';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import {styled, createTheme, ThemeProvider, responsiveFontSizes} from '@mui/material/styles';
+import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 import {useNavigate} from 'react-router-dom';
 

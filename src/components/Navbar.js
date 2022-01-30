@@ -48,9 +48,16 @@ export default function Navbar() {
   const handleLogInLogout = ()=>{
     setIsLoggedIn(!isLoggedIn)
   }
- const routeChange=()=>{
+  const routeChange=()=>{
     let path = `/cart`; 
     navigate(path);
+  }
+  const itemsCount=()=>{
+    let counter =0;
+    state.forEach((item)=>{
+      counter+= item.qty
+    })
+    return counter;
   }
 
   const menuId = 'primary-search-account-menu';
@@ -290,7 +297,8 @@ export default function Navbar() {
             <Stack direction="row" spacing={2} sx={{ display:{xs: 'none', md: 'flex' }}}>
               <Button variant="contained" color='info' onClick={() => {handleLogInLogout();}} ><LoginIcon/> Login</Button>
               <Button variant="contained" color='info' onClick={() => {alert('Register clicked');}} ><PersonAddIcon/>Register</Button>
-              <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({state.length})</Button>
+              {/* <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({state.length})</Button> */}
+              <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({itemsCount()})</Button>
             </Stack>
             </>
           }

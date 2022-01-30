@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Container, Box, Typography, Button,Card, CardMedia,CardContent,Rating  } from '@mui/material/';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
-import { makeStyles, createTheme, responsiveFontSizes,ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles, } from "@material-ui/core/styles";
 import {useDispatch} from 'react-redux';
 import {addCart}  from '../redux/action';
 const {getProductDetailsData} = require('../DAL/DAL');
