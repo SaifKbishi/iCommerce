@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link as MUILink} from '@mui/material/';
 import { useNavigate, Link as RouterLink } from "react-router-dom";
-import {AppBar,Box,Toolbar,IconButton ,Typography,Menu ,Avatar ,Button ,Tooltip ,MenuItem,InputBase,Badge, Stack} from '@mui/material/';
+import {Box,Typography,} from '@mui/material/';
 
 const Footer = () => {
   return (

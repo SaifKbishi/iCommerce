@@ -8,11 +8,7 @@ import {Container, Box, Typography, Button, Rating  } from '@mui/material/';
 const Cart = () => {
   const state = useSelector((state)=> state.handleCart);//handleCart from the reducer
   const dispatch = useDispatch();
-    const navigate = useNavigate();
-  // console.log(state)
-  // const handleClose = (item)=>{
-  //   dispatch(delCart(item));
-  // }
+  const navigate = useNavigate();
   const routeToCheckOut =()=>{
     let path = `/checkout`; 
     navigate(path);

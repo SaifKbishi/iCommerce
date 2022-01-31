@@ -22,9 +22,6 @@ const Products = () => {
     const getProducts=async()=>{
       setLoading(true);
       try{
-        // const products = await axios.get(`https://fakestoreapi.com/products/`,{
-        //   cancelToken: source.token,
-        // });
         const products = await getProductsData(source);
 
         setProductsData(products.data);
