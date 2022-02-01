@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Box, Typography, Button, Divider, TextField, Checkbox} from '@mui/material/';
-import {styled, createTheme, makeStyles } from '@mui/material/styles';
+import {styled, createTheme, makeStyles } from '@mui/styles';
 import SmallBasket from './SmallBasket';
 
 const Checkout = () => {
