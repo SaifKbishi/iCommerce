@@ -50,4 +50,6 @@ export default App;
   https://mui.com/getting-started/installation/<br/>
   https://www.pluralsight.com/guides/installing-and-using-material-ui-with-react<br/>
   </p>
-</header> */}
+</header> 
+"start": "react-scripts start",
+*/}
