@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 To demonstrate a real E-commenrce application i used a free online REST API [fakeStoreApi](https://fakestoreapi.com/).
 
 ### Redux  
-For state management i used Redux.  
+For state management I used Redux.  
 
 ### React UI library
 I have robusted and customized it with [MUI](https://mui.com/), the React UI library.
