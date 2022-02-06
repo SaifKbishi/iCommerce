@@ -19,7 +19,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 export default function Navbar() {
-  const state = useSelector((state) => state.handleCart);
+  const state = useSelector((state) => state.handleCart);  
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [isLoggedIn , setIsLoggedIn] = useState(false);

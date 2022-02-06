@@ -1,10 +1,8 @@
 import React, { useState} from 'react';
-import {Container, Box, Typography, Button, Divider, TextField, Checkbox} from '@mui/material/';
-import {styled, createTheme, makeStyles } from '@mui/styles';
+import {Box, Typography, Button, Divider, Checkbox} from '@mui/material/';
 import TextInput  from '../components/utils/TextInput';
 
 const RegisterForm = () => {
-  const classes = useStyles();
   const initialState = {firstname:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
   const [register, setRegister] = useState(initialState); 
 
@@ -42,9 +40,3 @@ const RegisterForm = () => {
 
 export default RegisterForm;
 
-const useStyles = makeStyles({
-  typoBold: {
-    fontWeight:'bold',
-    marginTop:'5px',
-  },
-});

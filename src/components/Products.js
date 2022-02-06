@@ -1,31 +1,35 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import {Container, Box, Typography, Divider,Button,Grid } from '@mui/material/';
+import {Container, Box, Typography, Divider,Button,Grid,InputBase } from '@mui/material/';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import {styled, createTheme, ThemeProvider} from '@mui/material/styles';
+import {styled, createTheme, ThemeProvider, alpha} from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 import {useNavigate} from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+import { nanoid } from 'nanoid'
+const greenColor = '#afd275';
 
 const {getProductsData} = require('../DAL/DAL');
 
 const Products = () => {
   const [productsData, setProductsData] = useState([]);
-  const [filter, setFilter] = useState(productsData);
+  const [filterData, setFilterData] = useState(productsData);
   const [loading, setLoading] = useState(true);
   const [spacing, setSpacing] = React.useState(2);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   useEffect(()=>{
     const source=axios.CancelToken.source();
+    // ref.StyledInputBase.focus();
     const getProducts=async()=>{
       setLoading(true);
       try{
         const products = await getProductsData(source);
-
         setProductsData(products.data);
-        setFilter(products.data);
+        setFilterData(products.data);
         setLoading(false);
       }catch(error){
         if(axios.isCancel(error)){
@@ -45,9 +49,21 @@ const Products = () => {
   const Loading=()=>{
     return(
     <Box sx={{display:'flex', justifyContent:"center", flexWrap: 'wrap',flexDirection:{xs:'column', sm:'row'} }}>
-      <Box sx={{mx:1}}>
+      {/* <Box sx={{mx:1}}>
         <Typography> Loading...</Typography>
+      </Box> */}
+      <Box sx={{mx:1}}>
+        <Skeleton height={450} width={250} /> 
       </Box>  
+      <Box sx={{mx:1}}>
+        <Skeleton height={450} width={250}/>
+      </Box>  
+      <Box sx={{mx:1}}>
+        <Skeleton height={450} width={250}/>
+      </Box>  
+      <Box sx={{mx:1}}>
+        <Skeleton height={450} width={250}/>
+      </Box>
       <Box sx={{mx:1}}>
         <Skeleton height={450} width={250} /> 
       </Box>  
@@ -66,7 +82,7 @@ const Products = () => {
     const filteredData = productsData.filter((product)=>{
       return product.category === filterstring;
     })
-    setFilter(filteredData);
+    setFilterData(filteredData);
   }
   const routeChange=(prodId)=>{
     let path = `/products/${prodId}`; 
@@ -79,16 +95,38 @@ const Products = () => {
       <ThemeProvider theme={icommerce}>
       <Container maxWidth={false} sx={{display:'flex', justifyContent:"center", flexDirection:'column', width:'1800px'}}>
         <Container maxWidth={false} sx={{display:'flex', justifyContent:"space-around", flexWrap: 'wrap'}}>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>setFilter(productsData)}>All</CustomizedButton>
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>setFilterData(productsData)}>All</CustomizedButton>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("men's clothing")}>Men's Clothing</CustomizedButton>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("women's clothing")}>Women's Clothing</CustomizedButton>
           <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("jewelery")}>Jewelry</CustomizedButton>
-          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("electronics")}>Electronic</CustomizedButton>    
+          <CustomizedButton variant="outlined" sx={{border:'1px solid #afd275', m:0.5}} onClick={()=>filterProducts("electronics")}>Electronic</CustomizedButton>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+              value={searchTerm}
+              key={nanoid()}
+              disableClearable
+              // autoFocus
+              onChange={(e)=>{
+                setSearchTerm(e.target.value);
+              }}
+            />
+          </Search>
         </Container>
           <Grid sx={{ flexGrow: 1, mt:4 }} container spacing={2}>
             <Grid item xs={20}>
               <Grid container  spacing={spacing} justifyContent='center'>
-                {filter.map((product, index)=>{
+                {filterData.filter((value)=>{
+                  if(searchTerm === ''){
+                    return value;
+                  }else if(value.title.toLowerCase().includes(searchTerm.toLowerCase())){
+                    return value;
+                  }
+                }).map((value, index)=>{
                   return(
                   <Grid key={index} item sx={{width: 250, flexWrap: 'wrap', justifyContent:'center' }}>
                     <Card sx={{ maxWidth: 250, height:'100%', display:'flex', alignContent:"center",flexDirection:'column', justifyContent: 'space-between',alignItems:'center', }}>  
@@ -96,18 +134,18 @@ const Products = () => {
                         component="img"
                         // width='100%'
                         height='200px'//'fill'//'fit-content'
-                        image={product.image}
-                        alt={product.title}
+                        image={value.image}
+                        alt={value.title}
                         
                       />
                       <CardContent  sx={{ display:'flex', alignContent:"center",flexDirection:'column', textAlign:'center', }}>
                         <Typography variant="h6"  >
-                          {product.title.substring(0,12)}...
+                          {value.title.substring(0,12)}...
                         </Typography>
                         <Typography sx={{py:1}}>
-                          price: {product.price}$
+                          price: {value.price}$
                         </Typography>                            
-                        <CustomizedButton variant="outlined" sx={{border:'2px solid', py:'5px'}} onClick={()=>routeChange(product.id)} data-testid="buy-me">Buy Me</CustomizedButton>                            
+                        <CustomizedButton variant="outlined" sx={{border:'2px solid', py:'5px'}} onClick={()=>routeChange(value.id)} data-testid="buy-me">Buy Me</CustomizedButton>                            
                       </CardContent>
                     </Card>
                   </Grid>
@@ -134,7 +172,6 @@ const Products = () => {
         <Divider />
         <Box sx={{display:'flex', justifyContent:'center', mt:5, width:'100%'}}>
           {loading ? <Loading/> : <ShowProducts/> }
-          {/* <ShowProducts/> */}
         </Box>
       </Container>
     //// {/* </> */}
@@ -199,3 +236,44 @@ typoTheme.typography.h1 = {
     fontSize: '4rem',
   },
 };
+
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(greenColor, 0.25),
+  '&:hover': {
+    backgroundColor: alpha(greenColor, 0.55),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
