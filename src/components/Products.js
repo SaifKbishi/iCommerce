@@ -87,7 +87,7 @@ const Products = () => {
         </Container>
           <Grid sx={{ flexGrow: 1, mt:4 }} container spacing={2}>
             <Grid item xs={20}>
-              <Grid container  spacing={spacing}>
+              <Grid container  spacing={spacing} justifyContent='center'>
                 {filter.map((product, index)=>{
                   return(
                   <Grid key={index} item sx={{width: 250, flexWrap: 'wrap', justifyContent:'center' }}>
@@ -107,7 +107,7 @@ const Products = () => {
                         <Typography sx={{py:1}}>
                           price: {product.price}$
                         </Typography>                            
-                        <CustomizedButton variant="outlined" sx={{border:'2px solid', py:'5px'}} onClick={()=>routeChange(product.id)}>Buy Me</CustomizedButton>                            
+                        <CustomizedButton variant="outlined" sx={{border:'2px solid', py:'5px'}} onClick={()=>routeChange(product.id)} data-testid="buy-me">Buy Me</CustomizedButton>                            
                       </CardContent>
                     </Card>
                   </Grid>

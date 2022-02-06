@@ -1,4 +1,5 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 import App from '../App';
 import About from '../components/About';
@@ -23,7 +24,6 @@ it('About renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Provider store={store}><About /></Provider>, div);
 });
-
 it('Cart renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
@@ -99,3 +99,23 @@ it('SmallBasket renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Provider store={store}><SmallBasket /></Provider>, div);
 });
+
+
+/******************** */
+
+/**
+it('About renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Provider store={store}><About /></Provider>, div);
+}); */
+
+
+/***a test from react testing library */
+test('renders about header', () => {
+  render(<About />);
+  const aboutHeader = screen.getByText(/who am I/i);
+  expect(aboutHeader).toBeInTheDocument();
+});
+
+
+

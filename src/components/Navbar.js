@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { styled, alpha,createTheme,ThemeProvider  } from '@mui/material/styles';
-// import { useHistory } from "react-router-dom";
 import {useSelector} from 'react-redux';
 
 import { useNavigate, Link as RouterLink } from "react-router-dom";
@@ -47,6 +46,10 @@ export default function Navbar() {
   };
   const handleLogInLogout = ()=>{
     setIsLoggedIn(!isLoggedIn)
+  }
+  const handleRegister=()=>{
+    let path = `/register`; 
+    navigate(path);
   }
   const routeChange=()=>{
     let path = `/cart`; 
@@ -113,10 +116,10 @@ export default function Navbar() {
             </Menu>
           </Box>
           {/**END MOBILE for left menu*/}
-          <MUILink component={RouterLink} to="/" color="inherit" underline="none"
+          <MUILink component={RouterLink} to="/" color="inherit" underline="none" 
             // onClick={handleCloseNavMenu}
-            sx={{ my: 3, mx:1, color: 'success', display: 'flex', flexGrow: {xs:1, sm:1,md:0}, }} textAlign="center">
-            <Typography variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }} >iAmazon</Typography>
+            sx={{ my: 3, mx:1, color: 'success', display: 'flex', flexGrow: {xs:1, sm:1,md:0}, }} textAlign="center" >
+            <Typography  variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }} >iAmazon</Typography>
           </MUILink>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
               <MUILink component={RouterLink} to="/products" color="inherit" underline="hover" 
@@ -296,7 +299,7 @@ export default function Navbar() {
             </Box>
             <Stack direction="row" spacing={2} sx={{ display:{xs: 'none', md: 'flex' }}}>
               <Button variant="contained" color='info' onClick={() => {handleLogInLogout();}} ><LoginIcon/> Login</Button>
-              <Button variant="contained" color='info' onClick={() => {alert('Register clicked');}} ><PersonAddIcon/>Register</Button>
+              <Button variant="contained" color='info' onClick={() => {handleRegister()}} ><PersonAddIcon/>Register</Button>
               {/* <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({state.length})</Button> */}
               <Button variant="contained" color='info' onClick={() => routeChange()} ><ShoppingCartIcon/>Cart ({itemsCount()})</Button>
             </Stack>
