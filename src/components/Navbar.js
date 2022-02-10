@@ -135,7 +135,7 @@ export default function Navbar() {
               sx={{ my: 3, mx:1, color: 'secondary', display: 'block' }}
               >CONTACT</MUILink>
           </Box>
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -143,7 +143,7 @@ export default function Navbar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
           {isLoggedIn ?
           <>
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
