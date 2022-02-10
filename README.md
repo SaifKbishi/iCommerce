@@ -2,6 +2,10 @@
 
 This project is an e-commerce site, that I have built with React, Redux and Material-UI.
 
+## Hosted on Github pages: 
+Open [http://SaifKbishi.github.io/iCommerce](http://SaifKbishi.github.io/iCommerce) to view it in your browser.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
