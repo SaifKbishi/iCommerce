@@ -1,7 +1,11 @@
 const cart=[];
 
 const handleCart=(state = cart, action)=>{
+  console.log('state: ',state)
+  console.log('cart: ',cart)
+  console.log('action: ', action)
   const product = action.payload;
+  console.log('product: ', product)
   switch(action.type){
     case 'ADDITEM':
       const exist = state.find((item)=>item.id === product.id);
