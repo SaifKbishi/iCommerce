@@ -28,7 +28,6 @@ const Home = () => {
             component="img"
             height="100%"
             image="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-            // image="https://image.shutterstock.com/image-photo/businessman-on-blurred-background-using-600w-566874976.jpg"
             alt="shutterstock image"
           />
         </CardContent>

@@ -30,7 +30,7 @@ function App() {
         <Route path="/smallBasket" element={<SmallBasket/>} />        
         <Route path="/register" element={<Register/>} />        
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
     </>
   );
