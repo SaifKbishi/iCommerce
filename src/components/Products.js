@@ -110,7 +110,7 @@ const Products = () => {
               value={searchTerm}
               key={nanoid()}
               disableClearable
-              autoFocus
+              // autoFocus
               onChange={(e)=>{
                 setSearchTerm(e.target.value);
               }}

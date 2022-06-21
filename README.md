@@ -29,3 +29,6 @@ The app is fully responsive.
 
 ### `npm test`
 To run tests using jest
+
+after each change
+npm run deploy

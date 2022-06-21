@@ -5,35 +5,33 @@ import Products from './Products';
 
 const Home = () => {
   return (
-<Container maxWidth={false} sx={{display:'flex', justifyContent:'center', flexDirection:'column', pt:12}} className="heroInvert">  
-  <Card sx={{ width: '100%',}}>
-  <CardContent sx={{p:3, }} className="hero">
-    <Box className="" sx={{position: 'absolute', color:'#afd275'}}>
-    <ThemeProvider theme={typoTheme}>
-      <Typography gutterBottom variant="h1" component="div" sx={{fontWeight:'bold', }}>
-        NEW COLLECTION IS HERE
-      </Typography>
-    </ThemeProvider>
-    <ThemeProvider theme={typoThemeh3}>
-      <Typography variant="h3" color="#7E685A" >
-        CHECKOUT MODREN STYLES
-      </Typography>
-    </ThemeProvider>
-    </Box>
-    <Box sx={{ display:'flex', alignItems:"center", justifyContent:'center'}} id="hero_box" >
-    <CardMedia  id="productsImage"
-      component="img"
-      // height="100%"
-      image="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-      alt="shopping image"
-      sx={{backgroundSize: 'auto',width:"65%", }}
-      title= "shopping cart"
-    />
-    </Box>
-  </CardContent>
-  </Card>
-  <Products/>
-</Container>
+    // <div className="hero" >
+    <Container maxWidth={false} sx={{height:'91.2vh', display:'flex', flex:'1 0 auto', justifyContent:'center'}} className="contact">  
+      <Card sx={{ width: '100%',  mt:10 }}>        
+        <CardContent>
+          <Box className="container" sx={{position: 'absolute', color:'#afd275'}}>
+          <ThemeProvider theme={typoTheme}>
+            <Typography gutterBottom variant="h1" component="div" sx={{fontWeight:'bold', }}>
+              NEW COLLECTION IS HERE
+            </Typography>
+          </ThemeProvider>
+          <ThemeProvider theme={typoThemeh3}>
+            <Typography variant="h3" color="#7E685A" >
+              CHECKOUT MODREN STYLES
+            </Typography>
+          </ThemeProvider>
+          </Box>
+          <CardMedia
+            component="img"
+            height="100%"
+            image="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+            alt="shutterstock image"
+          />
+        </CardContent>
+      </Card>
+      <Products/>
+      </Container>
+    // </div>
   );
 };
 
