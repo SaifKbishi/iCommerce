@@ -6,7 +6,7 @@ import Products from './Products';
 const Home = () => {
   return (
 <Container maxWidth={false} sx={{display:'flex', justifyContent:'center', flexDirection:'column', pt:12}} className="heroInvert">  
-  <Card sx={{ width: '100%',}}>
+  <Card sx={{ width: '100%',}} className="noShadowBox">
   <CardContent sx={{p:3, }} className="hero">
     <Box className="" sx={{position: 'absolute', color:'#afd275'}}>
     <ThemeProvider theme={typoTheme}>
